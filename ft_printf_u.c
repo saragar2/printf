@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_d.c                                      :+:      :+:    :+:   */
+/*   ft_printf_u.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saragar2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 20:07:07 by saragar2          #+#    #+#             */
-/*   Updated: 2023/11/28 20:07:09 by saragar2         ###   ########.fr       */
+/*   Created: 2023/11/29 20:51:58 by saragar2          #+#    #+#             */
+/*   Updated: 2023/11/29 20:52:01 by saragar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,9 @@
 void	ft_putnbr(int n)
 {
 	if (n == -2147483648)
-		write(1, "-2147483648", 11);
+		write(1, "2147483648", 10);
 	if (n < 0 && n != -2147483648)
-	{
-		ft_putchar('-');
 		n = -n;
-	}
 	if (n < 10 && n != -2147483648)
 		ft_putchar(n + '0');
 	else
@@ -43,6 +40,7 @@ int	countNum(int n)
 	int	j;
 
 	j = 0;
+	n *= -1;
 	while (n >= 1)
 	{
 		n /= 10;
@@ -51,7 +49,7 @@ int	countNum(int n)
 	return (j);
 }
 
-int	writeDecimal(va_list args)
+int	writeUnsigned(va_list args)
 {
 	int num;
 	int	j;

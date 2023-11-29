@@ -25,16 +25,16 @@ int whichArgs(char letter, va_list args)
         //return (j = writeVoidHex(args) + 1);
     //if (letter == 'd')
         //return (j = writeDecimal(args) + 1);
-     if (letter == 'i')
-         return (j = writeDecimal(args) + 1);
-    /*if (letter == 'u')
-        return (j = writeUnsigned(args) + 1);
-    if (letter == 'x')
-        return (j = writeMinusHex(args) + 1);
-    if (letter == 'X')
-        return (j = writeMayusHex(args) + 1);
+    //if (letter == 'i')
+        //return (j = writeDecimal(args));
+    if (letter == 'u')
+        return (j = writeUnsigned(args));
+    //if (letter == 'x') <<<<<--------------SIN HACER-----------------
+        //return (j = writeMinusHex(args) + 1);
+    //if (letter == 'X') <<<<<--------------SIN HACER-----------------
+        //return (j = writeMayusHex(args) + 1);
     if (letter == '%')
-        return (j = writePercent(args) + 1);*/
+        return (j = writePercent());
     else
         return (-1);
 }
@@ -54,8 +54,9 @@ int ft_printf(char const *str, ...)
 			write(1, str++, 1);
 			i++;
 		}
-		if (*str++ == '%')
+		if (*str == '%')
 		{
+			str++;
 			while (*str == ' ')
 				str++;
 			j = whichArgs(*str, args);
@@ -80,8 +81,13 @@ int main()
 	//int	num = 1234;
     //n = ft_printf("Hola%dp", num);
 	//--------------%i---------------
-	 int	num = 1234;
-     n = ft_printf("Hola%ip\n", num);
+	//int	num = 1234;
+    //n = ft_printf("Hola%ip", num);
+	//--------------%u---------------
+	//int	num = -1234;
+    //n = ft_printf("Hola%up", num);
+	//--------------%%---------------
+    n = ft_printf("Hola%%p");
     printf("\nn = %i", n);
     return (0);
 }

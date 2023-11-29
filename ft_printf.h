@@ -23,6 +23,8 @@ int writeChar(va_list args);
 int writeString(va_list args);
 int	writeDecimal(va_list args);
 int	writeInt(va_list args);
+int	writeUnsigned(va_list args);
+int	writePercent(void);
 void	ft_putnbr(int n);
 void	ft_putchar(char c);
 int		countNum(int n);
