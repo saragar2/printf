@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_putnbr(int n)
+void	ft_putnbr_u(int n)
 {
 	if (n == -2147483648)
 		write(1, "2147483648", 10);
@@ -30,12 +30,12 @@ void	ft_putnbr(int n)
 	}
 }
 
-void	ft_putchar(char c)
+void	ft_putchar_u(char c)
 {
 	write(1, &c, 1);
 }
 
-int	countNum(int n)
+int	countNum_u(int n)
 {
 	int	j;
 

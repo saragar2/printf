@@ -25,8 +25,15 @@ int	writeDecimal(va_list args);
 int	writeInt(va_list args);
 int	writeUnsigned(va_list args);
 int	writePercent(void);
+int	writeMinusHex(unsigned int num);
+int	writeMayusHex(unsigned int num);
+int	writeVoidHex(size_t num);
 void	ft_putnbr(int n);
 void	ft_putchar(char c);
 int		countNum(int n);
+void	ft_putnbr_u(int n);
+void	ft_putchar_u(char c);
+int		countNum_u(int n);
+int		PorxorX(va_list args, char letter);
 
 #endif

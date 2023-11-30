@@ -19,6 +19,11 @@ int	writeString(va_list args)
 
 	j = 0;
 	string = va_arg(args, char *);
+	if (!string)
+	{
+		write(1, "(null)", 6);
+		return (j = 6);
+	}
 	while(*string != '\0')
 	{
 		write(1, string, 1);
