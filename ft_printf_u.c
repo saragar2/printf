@@ -40,7 +40,11 @@ int	countNum_u(int n)
 	int	j;
 
 	j = 0;
-	n *= -1;
+	if (n < 0)
+	{
+		j = 1;
+		n *= -1;
+	}
 	while (n >= 1)
 	{
 		n /= 10;
