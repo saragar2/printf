@@ -57,7 +57,7 @@ int	writeVoidHex(size_t num)
 		j += write(1, base + num, 1);
 	else
 	{
-		j += writeMinusHex(num / 16);
+		j += writeVoidHex(num / 16);
 		j += write(1, base + (num % 16), 1);
 	}
 	return (j);
