@@ -43,6 +43,11 @@ int	countNum(int n)
 	int	j;
 
 	j = 0;
+	if (n < 0)
+	{
+		j = 1;
+		n *= -1;
+	}
 	while (n >= 1)
 	{
 		n /= 10;
