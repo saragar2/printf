@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	writeString(va_list args)
+int	write_string(va_list args)
 {
 	char	*string;
 	int		j;
@@ -24,7 +24,7 @@ int	writeString(va_list args)
 		write(1, "(null)", 6);
 		return (j = 6);
 	}
-	while(*string != '\0')
+	while (*string != '\0')
 	{
 		write(1, string, 1);
 		string++;

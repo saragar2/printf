@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	writePercent(void)
+int	write_percent(void)
 {
 	int	j;
 

@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	writeMinusHex(unsigned int num)
+int	write_minus_hex(unsigned int num)
 {
 	char	*base;
 	int		j;
@@ -23,13 +23,13 @@ int	writeMinusHex(unsigned int num)
 		j += write(1, base + num, 1);
 	else
 	{
-		j += writeMinusHex(num / 16);
+		j += write_minus_hex(num / 16);
 		j += write(1, base + (num % 16), 1);
 	}
 	return (j);
 }
 
-int	writeMayusHex(unsigned int num)
+int	write_mayus_hex(unsigned int num)
 {
 	char	*base;
 	int		j;
@@ -40,49 +40,50 @@ int	writeMayusHex(unsigned int num)
 		j += write(1, base + num, 1);
 	else
 	{
-		j += writeMayusHex(num / 16);
+		j += write_mayus_hex(num / 16);
 		j += write(1, base + (num % 16), 1);
 	}
 	return (j);
 }
 
-int	writeVoidHex(size_t num)
+int	write_void_hex(size_t forp)
 {
 	char	*base;
 	int		j;
 
 	base = "0123456789abcdef";
 	j = 0;
-	if (num < 16)
-		j += write(1, base + num, 1);
+	if (forp < 16)
+		j += write(1, base + forp, 1);
 	else
 	{
-		j += writeVoidHex(num / 16);
-		j += write(1, base + (num % 16), 1);
+		j += write_void_hex(forp / 16);
+		j += write(1, base + (forp % 16), 1);
 	}
 	return (j);
 }
 
-int	PorxorX(va_list args, char letter)
+int	p_or_x_or_mx(va_list args, char letter)
 {
-	int	num;
-	int j;
+	int		num;
+	size_t	forp;
+	int		j;
 
 	if (letter == 'x')
 	{
 		num = va_arg(args, unsigned int);
-		return (j = writeMinusHex(num));
+		return (j = write_minus_hex(num));
 	}
 	if (letter == 'X')
 	{
 		num = va_arg(args, unsigned int);
-		return (j = writeMayusHex(num));
+		return (j = write_mayus_hex(num));
 	}
 	if (letter == 'p')
 	{
-		num = va_arg(args, size_t);
+		forp = va_arg(args, size_t);
 		write(1, "0x", 2);
-		return (j = writeVoidHex(num));
+		return (j = write_void_hex(forp) + 2);
 	}
 	else
 		return (-1);

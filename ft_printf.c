@@ -12,38 +12,38 @@
 
 #include "ft_printf.h"
 
-int whichArgs(char letter, va_list args)
+int	which_args(char letter, va_list args)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	if (letter == 'c')
-		return (j = writeChar(args));
+		return (j = write_char(args));
 	if (letter == 's')
-		return (j = writeString(args));
+		return (j = write_string(args));
 	if (letter == 'p')
-		return (j = PorxorX(args, letter));
+		return (j = p_or_x_or_mx(args, letter));
 	if (letter == 'd')
-		return (j = writeDecimal(args));
+		return (j = write_decimal(args));
 	if (letter == 'i')
-		return (j = writeDecimal(args));
+		return (j = write_decimal(args));
 	if (letter == 'u')
-		return (j = writeUnsigned(args));
+		return (j = write_unsigned(args));
 	if (letter == 'x')
-		return (j = PorxorX(args, letter));
+		return (j = p_or_x_or_mx(args, letter));
 	if (letter == 'X')
-		return (j = PorxorX(args, letter));
+		return (j = p_or_x_or_mx(args, letter));
 	if (letter == '%')
-		return (j = writePercent());
+		return (j = write_percent());
 	else
 		return (-1);
 }
 
-int ft_printf(char const *str, ...)
+int	ft_printf(char const *str, ...)
 {
-	int     i;
-	int     j;
-	va_list args;
+	int		i;
+	int		j;
+	va_list	args;
 
 	i = 0;
 	va_start(args, str);
@@ -57,9 +57,9 @@ int ft_printf(char const *str, ...)
 		if (*str == '%')
 		{
 			str++;
-			while (*str == ' ')
-				str++;
-			j = whichArgs(*str, args);
+			j = which_args(*str, args);
+			if (j == -1)
+				return (-1);
 			i = i + j;
 			str++;
 		}
@@ -71,6 +71,7 @@ int ft_printf(char const *str, ...)
 int main()
 {
 	int     n;
+	int		m;
 	//--------------%c---------------
     //char    letter = 'k';
 	//n = ft_printf("Hola%cp", letter);
@@ -78,23 +79,26 @@ int main()
 	// char    *str = "Hola";
     // n = ft_printf("Hola%sp", str);
 	//--------------%d---------------
-	int	num = -1;
-    n = ft_printf("Hola%dp", num);
+	//int	num = -2147483648;
+    //n = ft_printf("Hola%dp", num);
+	//m = printf("Hola%dp", num);
 	//--------------%i---------------
 	//int	num = 1234;
     //n = ft_printf("Hola%ip", num);
 	//--------------%u---------------
-	//int	num = -1234;
-    //n = ft_printf("Hola%up", num);
+	// int	num = -1;
+    // n = ft_printf("Hola%up", num);
+	// m = printf("Hola%up", num);
 	//--------------%%---------------
     //n = ft_printf("Hola%%p");
 	//--------------%p---------------
-	//int num = 1234;
-    //n = ft_printf("Hola%pp", &num);
-	//printf("\nhola%pp", &num);
+	int num = -1;
+	n = ft_printf("Hola%pp", &num);
+	m = printf("\nhola%pp", &num);
 	//--------------%x---------------
 	//int num = 1234;
     //n = ft_printf("Hola%xp", num);
     printf("\nn = %i", n);
+	printf("\nn = %i", m);
     return (0);
 }

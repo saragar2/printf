@@ -15,25 +15,24 @@
 
 # include <unistd.h>
 # include <stdio.h>
-#include <stdarg.h>
+# include <stdarg.h>
 
-int ft_printf(char const *str, ...);
-int whichArgs(char letter, va_list args);
-int writeChar(va_list args);
-int writeString(va_list args);
-int	writeDecimal(va_list args);
-int	writeInt(va_list args);
-int	writeUnsigned(va_list args);
-int	writePercent(void);
-int	writeMinusHex(unsigned int num);
-int	writeMayusHex(unsigned int num);
-int	writeVoidHex(size_t num);
+int		ft_printf(char const *str, ...);
+int		which_args(char letter, va_list args);
+int		write_char(va_list args);
+int		write_string(va_list args);
+int		write_decimal(va_list args);
+int		write_unsigned(va_list args);
+int		write_percent(void);
+int		write_minus_hex(unsigned int num);
+int		write_mayus_hex(unsigned int num);
+int		write_void_hex(size_t num);
 void	ft_putnbr(int n);
 void	ft_putchar(char c);
-int		countNum(int n);
-void	ft_putnbr_u(int n);
+int		count_num(int n);
+void	ft_putnbr_u(unsigned int n);
 void	ft_putchar_u(char c);
-int		countNum_u(int n);
-int		PorxorX(va_list args, char letter);
+int		count_num_u(unsigned int n);
+int		p_or_x_or_mx(va_list args, char letter);
 
 #endif

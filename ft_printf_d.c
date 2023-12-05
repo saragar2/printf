@@ -38,11 +38,15 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-int	countNum(int n)
+int	count_num(int n)
 {
 	int	j;
 
 	j = 0;
+	if (n == 0)
+		return (j = 1);
+	if (n == -2147483648)
+		return (j = 11);
 	if (n < 0)
 	{
 		j = 1;
@@ -56,13 +60,13 @@ int	countNum(int n)
 	return (j);
 }
 
-int	writeDecimal(va_list args)
+int	write_decimal(va_list args)
 {
-	int num;
+	int	num;
 	int	j;
 
 	num = va_arg(args, int);
 	ft_putnbr(num);
-	j = countNum(num);
+	j = count_num(num);
 	return (j);
 }

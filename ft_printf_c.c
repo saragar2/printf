@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	writeChar(va_list args)
+int	write_char(va_list args)
 {
 	char	letter;
 	int		j;

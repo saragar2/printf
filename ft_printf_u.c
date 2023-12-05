@@ -12,21 +12,14 @@
 
 #include "ft_printf.h"
 
-void	ft_putnbr_u(int n)
+void	ft_putnbr_u(unsigned int n)
 {
-	if (n == -2147483648)
-		write(1, "2147483648", 10);
-	if (n < 0 && n != -2147483648)
-		n = -n;
-	if (n < 10 && n != -2147483648)
+	if (n < 10)
 		ft_putchar(n + '0');
 	else
 	{
-		if (n != -2147483648)
-		{
-			ft_putnbr(n / 10);
-			ft_putchar(n % 10 + '0');
-		}
+		ft_putnbr(n / 10);
+		ft_putchar(n % 10 + '0');
 	}
 }
 
@@ -35,16 +28,13 @@ void	ft_putchar_u(char c)
 	write(1, &c, 1);
 }
 
-int	countNum_u(int n)
+int	count_num_u(unsigned int n)
 {
 	int	j;
 
 	j = 0;
-	if (n < 0)
-	{
-		j = 1;
-		n *= -1;
-	}
+	if (n == 0)
+		return (j = 1);
 	while (n >= 1)
 	{
 		n /= 10;
@@ -53,13 +43,13 @@ int	countNum_u(int n)
 	return (j);
 }
 
-int	writeUnsigned(va_list args)
+int	write_unsigned(va_list args)
 {
-	int num;
-	int	j;
+	unsigned int	num;
+	int				j;
 
-	num = va_arg(args, int);
-	ft_putnbr(num);
-	j = countNum(num);
+	num = va_arg(args, unsigned int);
+	ft_putnbr_u(num);
+	j = count_num_u(num);
 	return (j);
 }
